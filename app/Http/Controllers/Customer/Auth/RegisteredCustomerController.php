@@ -49,7 +49,7 @@ class RegisteredCustomerController extends Controller
 
         event(new Registered($customer));
 
-        Auth::login($customer);
+        Auth::guard('customer')->login($customer);
 
         return redirect(RouteServiceProvider::HOME);
     }

@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        $request->authenticate('customer');
 
         $request->session()->regenerate();
 
@@ -49,8 +49,9 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         Auth::guard('customer')->logout();
-
-        $request->session()->invalidate();
+        if (is_null(Auth::guard('administrator')->user())) {
+            $request->session()->invalidate();
+        }
 
         $request->session()->regenerateToken();
 

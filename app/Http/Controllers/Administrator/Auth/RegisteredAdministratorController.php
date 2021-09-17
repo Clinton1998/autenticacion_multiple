@@ -49,8 +49,9 @@ class RegisteredAdministratorController extends Controller
 
         event(new Registered($administrator));
 
-        Auth::login($administrator);
+        Auth::guard('administrator')->login($administrator);
 
-        return redirect(RouteServiceProvider::HOME);
+        //return redirect(RouteServiceProvider::HOME);
+        return redirect('/admin/dashboard');
     }
 }
