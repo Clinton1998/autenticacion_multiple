@@ -25,13 +25,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-   /*  $value = Auth::guard('administrator');
-    dd($value); */
-    //dd(Auth::guard('customer')->user());
+   /* $value = Auth::guard('administrator');
+   dd(Auth::guard('customer')->user());*/
 
-    //dd(Auth::guard('customer')->check());
     return Inertia::render('Customer/Dashboard');
 })->middleware(['auth:customer', 'verified'])->name('dashboard');
+
+Route::get('/admin/dashboard', function () {
+     return Inertia::render('Administrator/Dashboard');
+})->middleware(['auth:administrator', 'verified'])->name('admin.dashboard');
 
 require __DIR__.'/customer-auth.php';
 require __DIR__.'/administrator-auth.php';
