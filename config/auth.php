@@ -17,7 +17,7 @@ return [
         /* 'guard' => 'web',
         'passwords' => 'users', */
         'guard' => 'customer',
-        'passwords' => 'users',
+        'passwords' => 'customers',
     ],
 
     /*
@@ -105,12 +105,25 @@ return [
     */
 
     'passwords' => [
-        'users' => [
+        /* 'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ], */
+        'customers' => [
+            'provider' => 'customers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
         ],
+        'administrators' => [
+            'provider' => 'administrators',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
     ],
 
     /*
