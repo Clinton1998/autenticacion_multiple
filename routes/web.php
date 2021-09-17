@@ -34,3 +34,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth:customer', 'verified'])->name('dashboard');
 
 require __DIR__.'/customer-auth.php';
+require __DIR__.'/administrator-auth.php';
